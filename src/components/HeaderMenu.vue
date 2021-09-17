@@ -2,18 +2,18 @@
   <nav class="navbar local-menu navbar-fixed-top page-menu transparent animate__fadeInDown" :class="{ 'not-at-top': notAtTop }">
     <div class="container">
       <div class="page-menu-wrapper">
-        <a href="#about" aria-label="about" class="page-menu-logo">
+        <a href aria-label="about" class="page-menu-logo">
           <img src="../assets/svgs/logo.svg" alt="">
         </a>
         <ul class="page-menu-list">
           <li class="page-menu-item">
-            <a href="#about" class="page-menu-link">About</a>
+            <a href class="page-menu-link">About</a>
           </li>
           <li class="page-menu-item">
-            <a href="#creators-ecosystem" class="page-menu-link">Creators Ecosystem</a>
+            <a href class="page-menu-link">Creators Ecosystem</a>
           </li>
           <li class="page-menu-item">
-            <a href="#services" class="page-menu-link">
+            <a href class="page-menu-link">
               What's inside
               <span class="icon-count">17</span>
             </a>
@@ -48,12 +48,8 @@ export default {
     onScroll() {
       if (window.pageYOffset != 0) {
         this.notAtTop = true;
-        console.log("heydo", this.notAtTop)
-        return
       } else {
         this.notAtTop = false;
-        console.log("deyho", this.notAtTop)
-        return
       }
     }
   }
@@ -72,6 +68,7 @@ export default {
     background: white;
     transition: all 0.25s ease-out;
 }
+
 
 .navbar.page-menu.not-at-top{
   box-shadow: 0 23px 47px -17px rgb(59 68 92 / 12%);
@@ -93,6 +90,7 @@ export default {
   padding: 0 15px;
   box-sizing: border-box;
 }
+
 
 .page-menu-wrapper {
   padding-top: 25px;
@@ -163,10 +161,12 @@ box-sizing: border-box;
     cursor: pointer;
 }
 
+@media (min-width: 992px){
 .page-menu.transparent .page-menu-link-button:hover {
     box-shadow: 0 12px 26px -17px rgb(35 55 121 / 60%);
     background: #32353d;
     color: #fff!important;
+}
 }
 
 .icon-count {
@@ -196,6 +196,67 @@ box-sizing: border-box;
     font-size: 12px;
     line-height: 14px;
     color: #fff;
+}
+
+@media (max-width: 1182px){
+.container {
+    width: 970px !important;
+}
+}
+
+@media (max-width: 991px){
+.page-menu .page-menu-wrapper {
+    overflow-x: scroll !important;
+}
+
+.page-menu-item {
+    display: inline-block;
+    list-style: none;
+    padding: 5px 10px 7px;
+    margin-left: 16px !important;
+    margin-right: 16px !important;
+    background-color: #f0f0f0;
+    border-radius: 50px;
+}
+
+.icon-count {
+  display: none;
+}
+
+.page-menu-item:last-of-type {
+    padding: 5px 10px 7px;
+}
+
+.page-menu-link {
+    font-size: 12px !important;
+    white-space: nowrap;
+}
+
+.page-menu.transparent .page-menu-link-button-black {
+  border: none;
+  font-weight: 500 !important;
+  padding: 0;
+}
+
+}
+
+@media (max-width: 974px){
+.container {
+    width: 750px !important;
+}
+}
+
+@media (max-width: 767px){
+.container {
+  padding-right: 0;
+  width: 100% !important;
+}
+
+.page-menu-item {
+    margin-left: 5px !important;
+    margin-right: 5px !important;
+}
+
 }
 
 </style>

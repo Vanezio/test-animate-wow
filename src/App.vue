@@ -5,9 +5,12 @@
     <section class="first-section basic-section"></section>
     <section class="banner-section basic-section">
       <div class="banner-icons">
-        <div id="left-1" class="banner-icon wow animate__slideInLeft"
+        <div
+          id="left-1"
+          class="banner-icon wow animate__slideInLeft"
           data-wow-duration="0.7s"
-          data-wow-delay="8.5s">
+          data-wow-delay="8.5s"
+        >
           <img src="./assets/svgs/messenger.svg" alt />
         </div>
 
@@ -56,9 +59,12 @@
           <img src="./assets/svgs/moderation.svg" alt />
         </div>
 
-        <div id="right-1" class="banner-icon wow animate__slideInRight"
+        <div
+          id="right-1"
+          class="banner-icon wow animate__slideInRight"
           data-wow-duration="0.7s"
-          data-wow-delay="8.5s">
+          data-wow-delay="8.5s"
+        >
           <img src="./assets/svgs/toolbox.svg" alt />
         </div>
 
@@ -110,21 +116,24 @@
       <div class="banner-content">
         <div class="banner-title wow fadeInUp">
           <div class="banner-left-text">Package</div>
+          <div class="not-service not-service-mobile">
+            <div class="not-service-icon wow opacity1"
+              data-wow-duration="0.3s"
+              data-wow-delay="7.5s"
+              ></div>
+            <div class="not-service-text wow animate__fadeInUp"
+              data-wow-duration="1s"
+              data-wow-delay="6.2s"
+              >Not provided by AdSense</div>
+          </div>
           <span class="linear-wipe">Basic</span>
-          <span class="sup-text wow opacity1"
-              data-wow-duration="0.5s"
-              data-wow-delay="3s"
-              >
+          <span class="sup-text wow opacity1" data-wow-duration="0.5s" data-wow-delay="3s">
             <span
               class="number wow animate__fadeInLeft"
               data-wow-duration="1s"
               data-wow-delay="4s"
             >100%</span>
-            <span
-              class="wow animate__fadeInUp"
-              data-wow-duration="1s"
-              data-wow-delay="5s"
-            >Must Have</span>
+            <span class="wow animate__fadeInUp" data-wow-duration="1s" data-wow-delay="5s">Must Have</span>
             <span
               class="wow animate__fadeInUp"
               data-wow-duration="1s"
@@ -137,14 +146,16 @@
               data-wow-duration="1s"
               data-wow-delay="7.5s"
             ></div>
-            <div class="not-service-text wow animate__fadeInUp"
+            <div
+              class="not-service-text wow animate__fadeInUp"
               data-wow-duration="1s"
               data-wow-delay="6.2s"
-              >Not provided by</div>
-            <div class="not-service-adSense wow animate__fadeInUp"
+            >Not provided by</div>
+            <div
+              class="not-service-adSense wow animate__fadeInUp"
               data-wow-duration="1s"
               data-wow-delay="6.5s"
-              >AdSense</div>
+            >AdSense</div>
           </div>
         </div>
         <div
@@ -208,7 +219,7 @@ body {
 
 a,
 a:hover {
-    text-decoration: none;
+  text-decoration: none;
 }
 
 #app {
@@ -434,6 +445,15 @@ a:hover {
   position: relative;
 }
 
+.not-service-mobile {
+  display: none;
+}
+
+.not-service-desktop .not-service-icon {
+  clip-path: inset(0 100% 0 0);
+
+}
+
 .not-service-icon {
   position: absolute;
   top: -65px;
@@ -444,7 +464,6 @@ a:hover {
   background-repeat: no-repeat;
   background-size: contain;
   background-image: url(./assets/images/arrow.png);
-  clip-path: inset(0 100% 0 0);
 }
 
 .not-service-text {
@@ -508,7 +527,7 @@ a:hover {
 }
 
 .sup-text span {
-  opacity: 0
+  opacity: 0;
 }
 
 .banner-desc {
@@ -552,13 +571,13 @@ a:hover {
   width: 220px;
   padding: 20px 60px;
   box-shadow: 0 12px 26px -17px rgb(35 55 121 / 60%);
-  transition: all .3s ease-out;
+  transition: all 0.3s ease-out;
 }
 
 .basic-button-blue:hover {
-    color: #f6f7fb;
-    -webkit-box-shadow: 0 12px 26px -8px rgb(35 55 121 / 60%);
-    box-shadow: 0 12px 26px -8px rgb(35 55 121 / 60%);
+  color: #f6f7fb;
+  -webkit-box-shadow: 0 12px 26px -8px rgb(35 55 121 / 60%);
+  box-shadow: 0 12px 26px -8px rgb(35 55 121 / 60%);
 }
 
 .single-text-sextion {
@@ -585,6 +604,92 @@ a:hover {
 
 .opacity1 {
   animation-name: opacity1;
+}
+
+@media (max-width: 960px) {
+  .banner-title {
+    font-size: 125px;
+    line-height: 125px;
+  }
+
+  .linear-wipe {
+    font-size: 125px;
+    line-height: 125px;
+  }
+  .banner-left-text {
+    display: none !important;
+  }
+
+  .banner-desc {
+    font-size: 16px;
+    line-height: 25px;
+    margin-bottom: 0;
+  }
+
+  .banner-desc-sub {
+    font-size: 12px;
+    line-height: 19px;
+    margin: 20px 0;
+  }
+
+  .banner-button {
+    margin: 35px 0;
+    opacity: 0;
+    margin-bottom: 25px;
+  }
+
+  .basic-button-big {
+    font-size: 18px;
+    line-height: 18px;
+    padding: 10px 60px;
+  }
+
+  .sup-text {
+    top: -105%;
+    right: 0;
+    font-size: 10px;
+    line-height: 12px;
+    width: 120px;
+    height: 140px;
+    font-weight: 400;
+  }
+
+  .not-service-mobile {
+    display: block !important;
+}
+ .not-service {
+    position: relative;
+}
+ .not-service-mobile .not-service-icon {
+    width: 49px !important;
+    height: 44px !important;
+    bottom: 0 !important;
+    left: 5% !important;
+    top: -40px !important;
+    background-image: url(./assets/images/arrow-circle.png) !important;
+    opacity: 0;
+}
+  .not-service-mobile .not-service-text {
+    left: 10%;
+    bottom: 0;
+    width: 160px;
+}
+
+.not-service-desktop {
+  display: none;
+}
+
+  .moto {
+    font-size: 28px;
+    line-height: 36px;
+    margin-bottom: 32px;
+  }
+}
+
+@media (max-width: 1200px) {
+  .banner-icons {
+    display: none;
+  }
 }
 
 @keyframes shine {

@@ -1,3 +1,3 @@
-module.exports = {
-    publicPath: '/test-animate-wow/'
-}
+// module.exports = {
+//     publicPath: '/test-animate-wow/'
+// }
