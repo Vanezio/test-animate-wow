@@ -91,7 +91,7 @@
                 <a href class="btn btn-square btn-outline black btn-join">Join AIR</a>
               </div>
               <div class="products-menu-row">
-                <div class="col col-l">
+                <div class="col col-l" :class="{ 'light' : col1 }">
                   <p class="menu-title">Packages</p>
                   <ul>
                     <li>
@@ -105,7 +105,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="col col-c">
+                <div class="col col-c" :class="{ 'light' : col2 }">
                   <p class="menu-title">Channel Types</p>
                   <ul>
                     <li>
@@ -116,7 +116,7 @@
                     </li>
                   </ul>
                 </div>
-                <div class="col col-r">
+                <div class="col col-r" :class="{ 'light' : col3 }">
                   <p class="menu-title">Community</p>
                   <ul>
                     <li>
@@ -127,25 +127,70 @@
                     </li>
                   </ul>
                 </div>
-                <div class="col"></div>
+                <div class="col" :class="{ 'light' : col4 }"></div>
               </div>
               <div class="products-menu-row products-items">
                 <p class="menu-title">Products</p>
                 <ul>
                   <li>
-                    <a href class="products-menu-link">AIR Support</a>
+                    <a
+                      href
+                      class="products-menu-link"
+                      v-on:mouseover="() => {col1 = true}"
+                      v-on:mouseout="() => {col1 = false}"
+                    >AIR Support</a>
                   </li>
                   <li>
-                    <a href class="products-menu-link">AIR Ads</a>
+                    <a
+                      href
+                      class="products-menu-link"
+                      v-on:mouseover="() => {col2 = true}"
+                      v-on:mouseout="() => {col2 = false}"
+                    >AIR Ads</a>
                   </li>
                   <li>
-                    <a href class="products-menu-link">AIR Distribution</a>
+                    <a
+                      href
+                      class="products-menu-link"
+                      v-on:mouseover="() => {col3 = true}"
+                      v-on:mouseout="() => {col3 = false}"
+                    >AIR Distribution</a>
                   </li>
                   <li>
-                    <a href class="products-menu-link">Translation &amp; Investment</a>
+                    <a
+                      href
+                      class="products-menu-link"
+                      v-on:mouseover="() => {
+                          if(windowWidth() > 991){
+                          col4 = true; 
+                          } else {
+                          col1 = true
+                      }}"
+                      v-on:mouseout="() => {
+                          if(windowWidth() > 991){
+                          col4 = false; 
+                          } else {
+                          col1 = false;
+                      }}"
+                    >Translation &amp; Investment</a>
                   </li>
                   <li>
-                    <a href class="products-menu-link">AIR Pay</a>
+                    <a
+                      href
+                      class="products-menu-link"
+                      v-on:mouseover="() => {
+                          if(windowWidth() > 991){
+                          col1 = true; 
+                          } else {
+                          col2 = true
+                      }}"
+                      v-on:mouseout="() => {
+                          if(windowWidth() > 991){
+                          col1 = false; 
+                          } else {
+                          col2 = false;
+                      }}"
+                    >AIR Pay</a>
                   </li>
                 </ul>
               </div>
@@ -165,7 +210,11 @@ export default {
       lastScrollPosition: 0,
       openLang: false,
       openWhiteDrop: false,
-      globalMenuOpen: false
+      globalMenuOpen: false,
+      col1: false,
+      col2: false,
+      col3: false,
+      col4: false
     };
   },
   mounted() {
@@ -188,6 +237,18 @@ export default {
       }
       this.showNavbar = currentScrollPosition < this.lastScrollPosition;
       this.lastScrollPosition = currentScrollPosition;
+    },
+    windowWidth() {
+      return window.innerWidth;
+    },
+    complexHover(firstVal, secondVal, boolean) {
+      if (window.innerWidth > 991) {
+        firstVal = boolean;
+        console.log(firstVal);
+      } else {
+        secondVal = boolean;
+        console.log(secondVal);
+      }
     }
   }
 };
@@ -393,11 +454,11 @@ W
   left: 0;
   clear: both;
   min-height: auto;
-    display: none;
-    min-height: 100vh;
-    background-color: #28282b;
-    z-index: 100;
-    width: 100%;
+  display: none;
+  min-height: 100vh;
+  background-color: #28282b;
+  z-index: 100;
+  width: 100%;
 }
 
 .global-menu.in {
@@ -418,6 +479,7 @@ W
   margin-top: 13px;
   height: 15px;
   cursor: pointer;
+  border-radius: 0 !important;
 }
 
 .global-header .global-menu-toggle .icon-bar {
@@ -458,7 +520,7 @@ W
   list-style: none;
   padding: 0;
   align-self: center;
-margin: -100.5px -15px 0;
+  margin: -100.5px -15px 0;
   flex-direction: column;
 }
 
@@ -469,57 +531,69 @@ margin: -100.5px -15px 0;
   padding-top: 13px;
 }
 
-
-
 .global-menu li:hover {
   background-color: #131315;
 }
 
 .global-menu .global-menu-link {
-    font-family: Gilroy,sans-serif;
-    font-style: normal;
-    font-weight: 400;
-    font-size: 22px!important;
-    line-height: 26px;
-    text-align: center;
-    color: #fff!important;
-    opacity: .8!important;
-    text-transform: none!important;
-    padding-top: 20px;
-    padding-bottom: 20px;
+  font-family: Gilroy, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 22px !important;
+  line-height: 26px;
+  text-align: center;
+  color: #fff !important;
+  opacity: 0.8 !important;
+  text-transform: none !important;
+  padding-top: 20px;
+  padding-bottom: 20px;
+}
+
+.navbar .navbar-collapse.products-menu {
+    overflow-x: hidden;
+    position: absolute;
+    left: 0;
+    width: 100%;
+    top: 42px;
+    box-sizing: border-box;
+    height: 100%;
 }
 
 .products-menu {
-  display: none;
-  text-align: left;
-  color: #1e1e20;
-  z-index: 100;
-  min-height: 100vh;
+    display: none!important;
+    /* background-color: #f0f8ff; */
+    color: #1e1e20;
+    padding: 28px 15px;
+    z-index: 100;
+    min-height: 100vh;
 }
 
 .products-menu.in {
-  display: block;
-  overflow-y: initial !important;
+    display: block !important;
+    overflow-y: auto;
 }
 
 .products-menu-bg {
-  position: relative;
-  height: 100%;
-  width: 100%;
+    position: relative;
+    height: 100%;
+    width: 100%;
 }
 
 .products-menu-bg:before {
-  content: "";
-  position: absolute;
-  left: 50%;
-  top: 0;
-  -webkit-transform: translate(-50%);
-  transform: translate(-50%);
-  width: 400%;
-  height: calc(100% + 55px);
-  background-color: #fff;
-  z-index: -1;
-  box-shadow: 0 23px 47px -17px rgb(59 68 92 / 12%);
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: -30px;
+    transform: translate(-50%);
+    width: 400%;
+    height: 200%;
+    background-color: #fff;
+    z-index: -1;
+    box-shadow: 0 23px 47px -17px rgb(59 68 92 / 12%);
+}
+
+.products-menu-row {
+  text-align: left;
 }
 
 .products-menu-row:first-of-type {
@@ -531,13 +605,13 @@ margin: -100.5px -15px 0;
 }
 
 .products-menu .sign-in-link {
-  font-style: normal;
-  font-weight: 500;
-  font-size: 16px;
-  line-height: 19px;
-  color: #1e1e20;
-  padding-left: 32px;
-  position: relative;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 16px;
+    line-height: 19px;
+    color: #1e1e20;
+    padding-left: 32px;
+    position: relative;
 }
 
 .products-menu .sign-in-link:before {
@@ -558,6 +632,13 @@ margin: -100.5px -15px 0;
 .products-menu .btn-join {
   border: 2px solid #000;
   display: none;
+}
+
+.products-menu .products-menu-row.top-row {
+    padding-top: 0;
+    margin-bottom: 35px;
+    padding-bottom: 0;
+    border: none;
 }
 
 .products-menu .products-menu-row.top-row .creators-ecosystem-text {
@@ -619,47 +700,57 @@ margin: -100.5px -15px 0;
     background: transparent;
     position: absolute;
     top: 0;
-    display: inline-block!important;
+    display: inline-block !important;
     clear: both;
     min-height: auto;
   }
 
   .global-menu .navbar-nav {
-  margin: 0;
-  flex-direction: row;
-}
+    margin: 0;
+    flex-direction: row;
+  }
 
-.global-menu .navbar-nav li {
+  .global-menu .navbar-nav li {
     padding-left: 22px;
     padding-right: 22px;
-}
+  }
 
   .global-menu .navbar-nav li.active {
-  background-color: #131315;
-  color: #fff;
-}
+    background-color: #131315;
+    color: #fff;
+  }
 
-.global-menu .global-menu-link {
+  .global-menu .global-menu-link {
     top: 0;
     left: 0;
     padding: 0;
-    font-size: 14px!important;
-    line-height: 16px!important;
-}
+    font-size: 14px !important;
+    line-height: 16px !important;
+  }
 
-.global-menu-toggle {
-  display: none;
-}
+  .global-menu-toggle {
+    display: none;
+  }
   .global-header .products-menu-toggle {
     display: block !important;
   }
 
+  .navbar .navbar-collapse {
+    top: 0;
+  }
+
+  .navbar .navbar-collapse.products-menu{
+    height: auto;
+  }
+
   .products-menu {
     padding-top: 30px;
-  }
+    overflow: visible!important;
+}
 
   .products-menu-bg:before {
     top: -30px;
+    height: calc(100% + 55px);
   }
 
   .products-menu .products-menu-row.top-row {
@@ -720,6 +811,11 @@ margin: -100.5px -15px 0;
     left: 0;
     background-color: #e5e5e5;
     -webkit-transition: 0.3s;
+    transition: 0.3s;
+  }
+
+  .products-menu .col.light:before {
+    background-color: #000;
     transition: 0.3s;
   }
 
@@ -785,6 +881,10 @@ margin: -100.5px -15px 0;
     margin-bottom: 27px;
   }
 
+  .products-menu .col:last-of-type {
+    display: block !important;
+  }
+
   .products-menu .col:before {
     top: -44px;
     height: 3px;
@@ -829,6 +929,4 @@ margin: -100.5px -15px 0;
     color: #3b3b3b;
   }
 }
-
-
 </style>
